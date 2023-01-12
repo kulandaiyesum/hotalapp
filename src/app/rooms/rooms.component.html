@@ -3,36 +3,20 @@
 
 <div [hidden]="hideRooms">
   number of rooms:
-  <div [innerText]="numberOfRooms"></div>
+  <div
+   [ngStyle]="{'color': rooms.avalableRooms ? 'steelblue' : 'red'}"
+   [innerText]="numberOfRooms">
+
+  </div>
   <!-- [innerText]="numberOfRooms" is property binding -->
 </div>
 
 {{rooms?.avalableRooms ?? 'no rooms'}}
 
-<div *ngIf="rooms?.avalableRooms">
-  Rooms List:
-   <!-- {{roomList}} -->
-   <table>
-    <tr>
-      <th>Index</th>
-      <th>Even/Odd</th>
-      <th>Room number</th>
-      <th>Room Type</th>
-      <th>Room Price</th>
-      <th>Room Amenities</th>
-      <th>Checkin Time</th>
-    </tr>
-    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList; let e=even; let o=odd; let i = index;">
-      <td>{{ i }}</td>
-      <td>{{e ? "Even" : "Odd"}}</td>
-      <td>{{room.roomNumber}}</td>
-      <td>{{room.roomType}}</td>
-      <td>{{room.price}}</td>
-      <td>{{room.amenities}}</td>
-      <td>{{room.checkinTime}}</td>
+<!-- {{roomList | json }}  it is for debuging purpose only-->
 
-    </tr>
-   </table>
+<div *ngIf="rooms?.avalableRooms">
+  <app-rooms-list [rooms]="roomList"></app-rooms-list>
 </div>
 
 <button (click)="toggle()">Toggle</button>

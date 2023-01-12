@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## bootstrap
+when add bootstrap to your application stops running the application, after the bootstrap added to the application you can run the application
+`ng add @ng-bootstrap/ng-bootstrap`
+use abouve command to install `@ng-bootstrap/ng-bootstrap@12.1.2`
+  
+
