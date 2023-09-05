@@ -1,23 +1,39 @@
-<h1>Welcome to {{hotalName}}</h1> 
+<!-- <h1>Welcome to {{hotalName}}</h1> -->
 <!-- {{hotalName}} is interpolation -->
-
-<div [hidden]="hideRooms">
+<!-- <app-header></app-header> -->
+<!-- <app-header></app-header> -->
+<!-- {{room$ | async | json }} -->
+<!-- <div [hidden]="hideRooms">
   number of rooms:
-  <div
-   [ngStyle]="{'color': rooms.avalableRooms ? 'steelblue' : 'red'}"
-   [innerText]="numberOfRooms">
+  <div [ngStyle]="{ color: rooms.avalableRooms ? 'steelblue' : 'red' }" [innerText]="numberOfRooms"></div>
+</div> -->
 
-  </div>
-  <!-- [innerText]="numberOfRooms" is property binding -->
-</div>
-
-{{rooms?.avalableRooms ?? 'no rooms'}}
+<!-- {{ rooms?.avalableRooms ?? "no rooms" }} -->
 
 <!-- {{roomList | json }}  it is for debuging purpose only-->
 
-<div *ngIf="rooms?.avalableRooms">
-  <app-rooms-list [rooms]="roomList"></app-rooms-list>
+<!-- <div *ngIf="selectedRoom">{{ selectedRoom | json }}</div> -->
+
+<div><button class="btn btn-success" (click)="addRoom()">Add Room</button></div>
+
+<!-- <h1> -->
+<!-- Number of Rooms: {{ roomsCount$ | async }} -->
+<!-- {{getError$ | async}} -->
+<!-- </h1> -->
+
+{{priceFilter | json}}
+<div>
+  <input type="number" class="form-control" placeholder="search room" [formControl]="priceFilter">
 </div>
 
-<button (click)="toggle()">Toggle</button>
-<!-- (click)="toggle()" is event binding -->
+<div *ngIf="rooms$ | async as rooms">
+  <app-rooms-list [rooms]="rooms" [title]="title" [price]="priceFilter.value" (selectedRoom)="selectRoom($event)"></app-rooms-list>
+</div>
+
+<!-- <button (click)="toggle()">Toggle</button>
+
+<button (click)="editRoom()">Edit Room</button>
+<button (click)="deleteRoom()">Delete Room</button>
+<h1>{{ totalBytes }}</h1> -->
+
+<router-outlet></router-outlet>
